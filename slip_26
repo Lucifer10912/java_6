@@ -1,3 +1,43 @@
+Q1
+importjava.sql.*;
+class Slip27_1
+{
+public static void main(String a[])
+{
+Connection con;
+PreparedStatementps;
+ResultSetrs;
+try
+{
+// load a driver
+Class.forName("org.postgresql.Driver");
+// Establish Connection
+conn = DriverManager.getConnection("jdbc:postgresql://192.168.1.21:5432/ty90", "ty90", 
+"");if(con==null)
+{
+System.out.println("Connection Failed....");
+System.exit(1);
+}
+System.out.println("Connection Established...");
+ps=con.prepareStatement("select * from employee where eid=?");
+int id = Integer.parseInt(a[0]);
+ps.setInt(1,id);
+rs=ps.executeQuery();
+System.out.println("eno\t"+"ename\t"+"department\t"+"sal"); while(rs.next())
+{
+System.out.println("\n"+rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+"\t"+rs.ge tInt(4));
+}
+con.close();
+}
+catch(Exception e)
+{
+System.out.println(e);
+}
+}
+}
+
+
+
 Q2
 <html>
 <body>
